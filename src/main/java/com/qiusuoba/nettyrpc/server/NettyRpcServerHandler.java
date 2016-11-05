@@ -47,7 +47,7 @@ public class NettyRpcServerHandler extends SimpleChannelUpstreamHandler {
 	public void exceptionCaught(ChannelHandlerContext ctx, ExceptionEvent e)
 			throws Exception {
 		RpcRequest request = (RpcRequest) ctx.getAttachment();
-		logger.error("handle rpc request fail! request: "+request,e.getCause());
+		//logger.error("handle rpc request fail! request: "+request,e.getCause());
 		e.getChannel().close().awaitUninterruptibly();
 	}
 

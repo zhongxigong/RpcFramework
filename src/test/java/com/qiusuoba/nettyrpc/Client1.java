@@ -11,10 +11,14 @@ public class Client1 {
 		try {
 			final IServer1 server1=RpcClientProxy.proxy(IServer1.class,"server1" , "myserver1");
 			long startMillis=System.currentTimeMillis();
-			for(int i=0;i<1;i++)
+			for(int i=0;i<10000;i++)
 			{
 				final int f_i=i;
-				send(server1,f_i);
+				server1.getMsg();
+				//System.out.println();
+				Future<String> future = RpcContext.getContext().getFuture();
+				//send(server1,f_i);
+				System.out.println(future.get());
 			}
 			long endMillis=System.currentTimeMillis();
 			System.out.println("spend time:"+(endMillis-startMillis));
